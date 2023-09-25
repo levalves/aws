@@ -1,7 +1,7 @@
 import boto3
 
 def lambda_handler(event, context):
-    # Lista de regiões que você deseja controlar
+    # Lista de region
     regions = ['us-east-1', 'us-east-2', 'us-west-1', 'us-west-2']
     
     for region in regions:
@@ -41,4 +41,4 @@ def lambda_handler(event, context):
                 except Exception as e:
                     print(f"Erro ao parar o cluster {db_cluster_identifier}: {str(e)}")
             else:
-                print(f"O estado do cluster {db_cluster_identifier} não é suportado ou desconhecido, pulando para o próximo.")
+                print(f"O estado do cluster {db_cluster_identifier} não é suportado ou desconhecido.")
