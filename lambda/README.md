@@ -20,6 +20,7 @@ A função Lambda aceita os seguintes parâmetros através do objeto de evento:
   "regions": ["us-west-2", "eu-central-1"],
   "instance_ids": ["i-xxxxxxxxxxxxxxxx", "i-yyyyyyyyyyyyyyyy"]
 }
+```
 
 # Lambda Function: StopEc2Param.py
 
@@ -43,3 +44,4 @@ A função Lambda aceita os seguintes parâmetros através do objeto de evento:
   "regions": ["us-west-2", "eu-central-1"],
   "instance_ids": ["i-xxxxxxxxxxxxxxxx", "i-yyyyyyyyyyyyyyyy"]
 }
+```
