@@ -1,3 +1,16 @@
+# ===========================================================================
+# Licensed Materials - Property of Levinux
+# "Restricted Materials of Levinux"
+# 
+# Levinux Scripting
+# (C) Copyright Levinux. 2023. All Rights Reserved
+# ===========================================================================
+# Title           : StartEc2Asg.py
+# Description     : Start instance EC2 with tag maintenace="yes" or "no" using Auto Scaling
+# Author          : levi.linux@hotmail.com
+# Date            : 2023-Dec-13
+# Version         : 1.0
+# ===========================================================================
 import boto3
 
 def list_auto_scaling_groups(regions):

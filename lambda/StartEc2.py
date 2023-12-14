@@ -1,4 +1,18 @@
-# Parada de EC2 onde setamos todas as regions e na precisa adicionar o Instance ID, mas cuidado porque se a TAG maintenance estiver como Yes vai INICIAR TUDO 
+# ===========================================================================
+# Licensed Materials - Property of Levinux
+# "Restricted Materials of Levinux"
+# 
+# Levinux Scripting
+# (C) Copyright Levinux. 2023. All Rights Reserved
+# ===========================================================================
+# Title           : StartEc2.py
+# Description     : Start instance EC2 with tag maintenace="yes" or "no"
+# Author          : levi.linux@hotmail.com
+# Date            : 2023-Dec-13
+# Version         : 1.0
+# ===========================================================================
+# Start de EC2 onde setamos todas as regions e nao precisa adicionar o Instance ID, mas cuidado porque se a TAG maintenance estiver como Yes vai INICIAR TUDO 
+
 import boto3
 
 def lambda_handler(event, context):

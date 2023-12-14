@@ -1,3 +1,16 @@
+# ===========================================================================
+# Licensed Materials - Property of Levinux
+# "Restricted Materials of Levinux"
+# 
+# Levinux Scripting
+# (C) Copyright Levinux. 2023. All Rights Reserved
+# ===========================================================================
+# Title           : StartStopMySQL.py
+# Description     : Start and Stop instance RDS with tag maintenace="yes" or "no"
+# Author          : levi.linux@hotmail.com
+# Date            : 2023-Dec-13
+# Version         : 1.0
+# ===========================================================================
 import boto3
 
 def lambda_handler(event, context):
