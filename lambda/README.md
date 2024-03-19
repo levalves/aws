@@ -451,3 +451,125 @@ Contribuições são bem-vindas! Sinta-se à vontade para abrir problemas ou env
 ### Licença
 
 Este script é distribuído sob a licença [MIT](LICENSE).
+
+---
+
+# Lambda Function: StartStopEc2.py
+
+Este script Python é destinado a ser usado como uma função AWS Lambda. Ele inicia e para instâncias EC2 com base na tag de manutenção configurada.
+
+## Pré-requisitos
+
+- AWS Lambda configurada para execução do script.
+- Permissões adequadas para a função Lambda acessar o serviço EC2.
+
+Policy name:                | Type:
+-------------------------   | ---------------
+AmazonEC2InstanceStopStart  | Customer managed
+
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "EC2PowerOnOff",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:StartInstances",
+                "ec2:StopInstances"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
+
+Policy name:                | Type:
+-------------------------   | ---------------
+AmazonEC2ReadOnlyAccess     | AWS managed
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "ec2:Describe*",
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "elasticloadbalancing:Describe*",
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "cloudwatch:ListMetrics",
+                "cloudwatch:GetMetricStatistics",
+                "cloudwatch:Describe*"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "autoscaling:Describe*",
+            "Resource": "*"
+        }
+    ]
+}
+```
+
+Policy name:                                | Type:
+-----------------------------------------   | ---------------
+AmazonS3ObjectLambdaExecutionRolePolicy     | AWS managed
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents",
+                "s3-object-lambda:WriteGetObjectResponse"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
+
+## Parâmetros de Entrada
+
+A função Lambda não exige parâmetros específicos de entrada, pois as regiões são definidas diretamente no código. Recomenda-se revisar e ajustar as regiões conforme necessário.
+
+## Funcionamento
+
+O script realiza as seguintes operações:
+
+1. Lista todas as instâncias EC2 na região.
+2. Verifica o estado e a tag de manutenção de cada instância e toma a ação apropriada com base nas tags configuradas.
+   - Start das instâncias marcadas para manutenção (`maintenance=yes`) se estiverem paradas.
+   - Stop das instâncias marcadas para manutenção (`maintenance=yes`) se estiverem em execução.
+
+## Configuração
+
+Certifique-se de revisar e ajustar a lista de regiões conforme necessário no código.
+
+## Exemplo de Uso
+
+O script pode ser implantado como uma função AWS Lambda. Certifique-se de configurar corretamente as permissões IAM para a função Lambda.
+
+## Notas Adicionais
+
+- Este script controla instâncias EC2 com base em tags configuradas e pode ser adaptado para outras lógicas de controle.
+- Verifique se as tags 'maintenance' estão configuradas corretamente nas instâncias para controlar o comportamento do script.
+
+## Licença
+
+Este script é distribuído sob a licença [MIT](LICENSE).
+
